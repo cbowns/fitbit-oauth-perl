@@ -24,11 +24,11 @@ Go to https://dev.fitbit.com/apps/new and register a new application. Set "Appli
 
 #### Save the API keys:
 
-1. Make a file in your home directory named `.api_keys`:
+Make a file in your home directory named `.api_keys`:
 
 	touch ~/.api_keys
 
-2. View your application on [dev.fitbit.com](https://dev.fitbit.com/apps). The details page will have entries for "Consumer key" and "Consumer secret". Copy those into your `.api_keys`, one per line:
+View your application on [dev.fitbit.com](https://dev.fitbit.com/apps). The details page will have entries for "Consumer key" and "Consumer secret". Copy those into your `.api_keys`, one per line:
 
 	> cat .api_keys
 	…
@@ -42,18 +42,16 @@ With an application and a Fitbit account, `request_token.pl` can request OAuth a
 
 (If you haven't already, download [OAuthSimple.pl](https://raw.github.com/jrconlin/oauthsimple/master/perl/OAuthSimple.pm) so that Perl can talk to Fitbit.)
 
-1. Run `request_token.pl`: `perl request_token.pl`. It will open a webpage that requests OAuth read-write access for your Fitbit application. Select "Allow". Fitbit will display a long PIN. Copy and paste that PIN into the terminal where `request_token.pl` is waiting, and hit enter.
+Run `request_token.pl`: `perl request_token.pl`. It will open a webpage that requests OAuth read-write access for your Fitbit application. Select "Allow". Fitbit will display a long PIN. Copy and paste that PIN into the terminal where `request_token.pl` is waiting, and hit enter.
 
-2. `request_token.pl` will finish handshaking with Fitbit, and will print out:
+`request_token.pl` will finish handshaking with Fitbit, and will print out:
 
 	OAuth Token:
 	<oauth token>
 	OAuth Token Secret:
 	<oauth token secret>
 
-3. Add these into `.api_keys`.
-
-When you're done, it should look like:
+Add these into `.api_keys`. When you're done, it should look like:
 
 	> cat .api_keys
 	…
