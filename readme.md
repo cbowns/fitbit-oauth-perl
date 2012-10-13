@@ -2,11 +2,11 @@
 
 A script to upload Weightbot weights to Fitbit.
 
-## In more detail:
+## Or, In Other Words:
 
 It's two Perl scripts: one to request a read-write OAuth token from Fitbit, and another to upload a CSV file from Weightbot. It's much faster than doing it yourself.
 
-## You'll need:
+## What You'll Need:
 
 1. [OAuthSimple.pl](https://raw.github.com/jrconlin/oauthsimple/master/perl/OAuthSimple.pm). Download it and put it right next to `request_token.pl` and `upload_data.pl`.
 
@@ -14,9 +14,9 @@ It's two Perl scripts: one to request a read-write OAuth token from Fitbit, and 
 
 3. A [registered Fitbit application](https://dev.fitbit.com/apps) with read-write access, and its API secrets.
 
-## How to get started:
+## How To Do It:
 
-### Get set up with Fitbit and its API keys:
+### 1. Get set up with Fitbit and its API keys.
 
 #### Register an application with Fitbit.
 
@@ -36,7 +36,7 @@ Select your application on [dev.fitbit.com](https://dev.fitbit.com/apps). The de
 	fitbit_uploader_oauth_shared_secret=<consumer secret>
 	…
 
-### Request an OAuth token:
+### 2. Request an OAuth token:
 
 With an application and a Fitbit account, `request_token.pl` can request OAuth access on your behalf and spit out a read-write token and secret.
 
@@ -70,6 +70,8 @@ For example:
 	fitbit_uploader_oauth_shared_secret=ef0123ab
 	…
 
-4. Run `upload_data.pl`: `perl upload_data.pl`.
+### 3. Run `upload_data.pl`.
+
+`perl upload_data.pl` will toss everything at Fitbit's API.
 
 What you have in your Weightbot CSV file is up to you. There's an early return clause in `upload_data.pl` if you only need it to run for a few days. It's safe to run the script multiple times: in my testing, Fitbit won't duplicate the posts, and the last-uploaded entry for that date wins.
