@@ -46,7 +46,7 @@ sub fetchkey()
 {
 	my @keysToRead = ( keys(%keys) );
 	my $file = "$home/.api_keys";
-	open(MYINPUTFILE, "<$file"); # open for input
+	open(MYINPUTFILE, "<$file") or die "Couldn't open '$file': $!";
 	print "Reading API keys from $file:\n" if $DEBUG;
 	my(@lines) = <MYINPUTFILE>; # read file into list
 	my($line);
@@ -82,7 +82,7 @@ print "Uploading to $full_post_url\n" if $DEBUG;
 
 my $csv = Text::CSV->new({ sep_char => ',' });
   
-open(my $data, '<', $file) or die "Could not open '$file' $!\n";
+open(my $data, '<', $file) or die "Couldn't open '$file' $!\n";
 my $count = 0;
 my @previous_field;
 my @field;
