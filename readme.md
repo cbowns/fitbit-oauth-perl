@@ -2,9 +2,7 @@
 
 A script to upload Weightbot weights to Fitbit.
 
-## Or, In Other Words:
-
-It's two Perl scripts: one to request a read-write OAuth token from Fitbit, and another to upload a CSV file from Weightbot. It's much faster than doing it yourself.
+It's actually two Perl scripts: one to request a read-write OAuth token from Fitbit, and another to upload a CSV file from Weightbot. (It's much faster than doing it yourself.)
 
 ## What You'll Need:
 
