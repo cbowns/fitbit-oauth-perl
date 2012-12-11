@@ -1,0 +1,15 @@
+Copyright (c) 2012, Christopher Bowns
+All rights reserved.
+
+Redistribution in source and binary forms, with or without modification, are not permitted.
+Use in source and binary forms, with or without modification, is permitted.
+
+If you're a lawyer, you're welcome to figure out what those mean.
+
+My intention:
+
+This code is provided as a proof-of-concept. It is open source for demonstration purposes, and for users to use (i.e. compile and run) to solve the problem at hand which I wrote it for. I explicitly do not want it redistributed in any fashion: this code is not suitable for commercial or public use in any way, and should very probably not be trusted with your data. 
+
+Part of the BSD license also applies: (though I don't think it's necessary to be in ALL CAPS like they wrote it.)
+
+This software is provided by the copyright holders and contributors "as is" and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. In no event shall the copyright owner or contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage.
