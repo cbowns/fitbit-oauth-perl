@@ -2,6 +2,7 @@
 
 use FindBin;
 use lib "$FindBin::Bin/.";
+
 use Data::Dumper;
 
 use OAuthSimple;
@@ -27,7 +28,7 @@ $oauth->setAction(POST);
 # app's values from https://dev.fitbit.com/apps
 
 # Put your home directory path here:
-my $home = ;
+my $home = $ENV{HOME};
 
 # Where's your CSV? Mine is next to this script:
 my $file = "weightbot_data.csv";
@@ -42,23 +43,26 @@ $keys{oauth_token_secret} = "oauth_token_secret";
 # .api_keys prefix:
 $keys{api_keys_prefix} = "fitbit_uploader";
 
-sub fetchkey()
-{
+sub fetchkey {
 	my @keysToRead = ( keys(%keys) );
 	my $file = "$home/.api_keys";
+	
 	open(MYINPUTFILE, "<$file") or die "Couldn't open '$file': $!";
 	print "Reading API keys from $file:\n" if $DEBUG;
-	my(@lines) = <MYINPUTFILE>; # read file into list
-	my($line);
-	foreach $line (@lines) # loop thru list
-	{
+	my (@lines) = <MYINPUTFILE>; # read file into list
+
+	for my $line (@lines) {
 		my @linekeys = split('=', $line);
+		
 		foreach $key (@keysToRead) {
 			my $searchVar = $keys{api_keys_prefix} . "_" . $key;
-			if (@linekeys[0] eq $searchVar) {
-				my $value = @linekeys[1];
+			
+			if ($linekeys[0] eq $searchVar) {
+				my $value = $linekeys[1];
 				chomp($value);
+				
 				print "Setting $key to $value\n" if $DEBUG;
+
 				$keys{$key} = $value;
 			}
 		}
@@ -83,26 +87,25 @@ print "Uploading to $full_post_url\n" if $DEBUG;
 my $csv = Text::CSV->new({ sep_char => ',' });
   
 open(my $data, '<', $file) or die "Couldn't open '$file' $!\n";
+
 my $count = 0;
 my @previous_field;
 my @field;
+
 while (my $line = <$data>) {
+    # skip first line (headers)
+    next if 1..1;
+    
 	$count++;
+	chomp $line;
+	
 	print "---\nRecord #$count:\n" if $DEBUG;
+	print "Line: $line\n" if $DEBUG;
 
 	# Parse the line:
-	chomp $line;
 	if ($csv->parse($line)) {
 		@previous_field = @field;
 		@field = $csv->fields();
-
-		# In my case, I had already entered weights up to 2012-02-06:
-		if ($field[0] == "---") {
-			print "Stopping before 2012-02-06.\n";
-			print "Last record:\n";
-			print Dumper(@previous_field);
-			last;
-		}
 
 		my $weight = $field[2];
 		my $date = $field[0];

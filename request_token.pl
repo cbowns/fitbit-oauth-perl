@@ -18,7 +18,7 @@ $oauth = new OAuthSimple();
 # app's values from https://dev.fitbit.com/apps
 
 # Put your home directory path here:
-my $home = ;
+my $home = $ENV{HOME};
 
 my %keys;
 $keys{oauth_consumer_key} = "oauth_consumer_key";
