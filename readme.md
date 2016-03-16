@@ -1,3 +1,9 @@
+# Info/Warning
+
+This script pre-dates Fitbit's transition to OAuth 2. Since writing this, I've created a new set of scripts for the Fitbit API in Ruby using [fitgem](https://github.com/whazzmaster/fitgem), but it's not been updated to reliably work with OAuth 2 either.
+
+I wish I had better news or a more helpful suggestion.
+
 # What is this?
 
 A script to upload Weightbot weights to Fitbit.
